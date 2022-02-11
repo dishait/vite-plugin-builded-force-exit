@@ -17,7 +17,7 @@
 ### 安装
 
 ```shell
-pnpm i 
+pnpm i vite-plugin-builded-force-exit
 
 // 或者 npm i vite-plugin-builded-force-exit
 // 或者 yarn add vite-plugin-builded-force-exit
