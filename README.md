@@ -1,6 +1,6 @@
-# vite-plugin-template
+# vite-plugin-build-force-exit
 
-开箱即用的 vite 插件模板
+vite 打包后强制退出的插件
 
 <br />
 
@@ -78,7 +78,7 @@ pnpm release
 
 ## License
 
-Made with name
+Made with markthree
 
 Published under [MIT License](./LICENSE).
 
