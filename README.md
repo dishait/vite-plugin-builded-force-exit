@@ -12,6 +12,32 @@
 <br />
 <br />
 
+
+## 注意事项 👀
+
+如果你有使用 `build` 模式即构建时的插件，那么你可能应该考虑使用其本身所暴露的配置
+
+例如 [vite-plugin-compression](https://github.com/vbenjs/vite-plugin-compression) 👇
+
+```ts
+import { defineConfig } from 'vite'
+import Compression from 'vite-plugin-compression'
+
+export default defineConfig({
+    plugins: [
+        Compression({
+            // 成功后强制，退出进程
+            success() {
+                setImmediate(process.exit) 
+            }
+        })
+    ]
+})
+```
+
+<br />
+<br />
+
 ## 使用 🦕
 
 ### 安装
