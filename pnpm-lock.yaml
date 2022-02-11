@@ -25,12 +25,14 @@ importers:
   examples/vite:
     specifiers:
       '@vitejs/plugin-vue': ^2.2.0
+      chokidar: ^3.5.3
       vite: ^2.8.0
       vite-plugin-builded-force-exit: workspace:*
       vite-plugin-inspect: ^0.3.14
       vue: ^3.2.30
     devDependencies:
       '@vitejs/plugin-vue': 2.2.0_vite@2.8.0+vue@3.2.30
+      chokidar: 3.5.3
       vite: 2.8.0
       vite-plugin-builded-force-exit: link:../..
       vite-plugin-inspect: 0.3.14_vite@2.8.0

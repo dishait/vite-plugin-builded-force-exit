@@ -2,10 +2,10 @@ export const createSleep = <T extends Function>(
 	callback: T
 ) => {
 	return (ms: number) => {
-		return new Promise(resolve => {
+		return new Promise<void>(resolve => {
 			setTimeout(() => {
 				callback()
-				resolve(null)
+				resolve()
 			}, ms)
 		})
 	}

@@ -20,11 +20,7 @@ const usePlugin = (options?: Partial<Options>): Plugin => {
 	return {
 		name: useName('builded-force-exit'),
 		apply: 'build',
-		enforce: 'post',
-		buildEnd(err) {
-			if (err) {
-				console.log(err.message)
-			}
+		closeBundle() {
 			if (options?.delay) {
 				sleepExit(options.delay)
 			} else {
