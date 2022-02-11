@@ -1,3 +1,16 @@
+export const createSleep = <T extends Function>(
+	callback: T
+) => {
+	return (ms: number) => {
+		return new Promise(resolve => {
+			setTimeout(() => {
+				callback()
+				resolve(null)
+			}, ms)
+		})
+	}
+}
+
 export const createPluginName = (
 	repeat: boolean = false
 ) => {

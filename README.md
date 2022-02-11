@@ -1,4 +1,4 @@
-# vite-plugin-build-force-exit
+# vite-plugin-builded-force-exit
 
 vite 打包后强制退出的插件
 
