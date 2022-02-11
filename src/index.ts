@@ -1,4 +1,3 @@
-import { exit } from 'process'
 import { Plugin } from 'vite'
 import {
 	createSleep,
@@ -14,18 +13,22 @@ interface Options {
 
 const useName = createPluginName()
 
-const sleepExit = createSleep(() => exit(0))
+const forceExit = () => {
+	process.removeAllListeners()
+	process.exit(0)
+}
+const sleepExit = createSleep(forceExit)
 
 const usePlugin = (options?: Partial<Options>): Plugin => {
 	return {
 		name: useName('builded-force-exit'),
 		apply: 'build',
+		enforce: 'post',
 		closeBundle() {
 			if (options?.delay) {
-				sleepExit(options.delay)
-				return
+				return sleepExit(options.delay)
 			}
-			exit(0)
+			forceExit()
 		}
 	}
 }

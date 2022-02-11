@@ -12,6 +12,17 @@ export default defineConfig({
 	plugins: [
 		Vue(),
 		Inspect(),
+		{
+			name: 'foo',
+			apply: 'build',
+			closeBundle() {
+				return new Promise(resolve => {
+					setTimeout(() => {
+						resolve('foo被触发了')
+					}, 1000)
+				}).then(msg => console.log(msg))
+			}
+		},
 		BuildedForceExit({
 			delay: 4000
 		})

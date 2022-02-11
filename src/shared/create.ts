@@ -2,23 +2,18 @@ export const createSleep = <T extends Function>(
 	callback: T
 ) => {
 	return (ms: number) => {
-		return new Promise<void>(resolve => {
-			setTimeout(() => {
-				callback()
-				resolve()
-			}, ms)
-		})
+		return new Promise(resolve => {
+			setTimeout(resolve, ms)
+		}).then(() => callback())
 	}
 }
 
 export const createPluginName = (
-	repeat: boolean = false
+	reusable: boolean = false
 ) => {
 	let i = 0
 	return (name: string) => {
-		if (repeat) {
-			return `vite-plugin-${name}:${i++}`
-		}
-		return `vite-plugin-${name}`
+		const base = `vite-plugin-${name}`
+		return reusable ? `${base}:${i++}` : base
 	}
 }
