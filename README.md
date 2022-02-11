@@ -1,77 +1,70 @@
 # vite-plugin-builded-force-exit
 
-vite 打包后强制退出的插件
+`vite` 打包后强制退出的插件
 
 <br />
 
-## Features 🦖
+## 动机 🐇
 
-- pnpm 的
-- `vitest` 测试
-- 开箱即用的
-- `typescript` 的
+在开发环境下，我们可能会在 `vite` 之外去注册一些监听，这些监听会让进程持续运行，例如 `chokidar` 的文件监听。  
+但是在 `vite` 的生产打包过程中如果不去手动移除所有的监听，会让整个进程持续进行着，即使打包已经完成了。
 
 <br />
 <br />
 
-## Usage 🦕
+## 使用 🦕
 
-### install
-
-```shell
-pnpm i
-```
-
-### test
+### 安装
 
 ```shell
-pnpm test
+pnpm i 
 
-// or pnpm test:watch
+// 或者 npm i vite-plugin-builded-force-exit
+// 或者 yarn add vite-plugin-builded-force-exit
 ```
 
-### build
+<br />
 
-```shell
-pnpm build
+### 配置
+
+```ts
+// vite.config.ts
+// 或者 vite.config.js
+
+import { defineConfig } from 'vite'
+import BuildedForceExit from 'vite-plugin-builded-force-exit'
+
+export default defineConfig({
+    plugins: [
+        // ...
+        BuildedForceExit()
+    ]
+})
 ```
 
-### coverage
+<br />
 
-```shell
-pnpm coverage
+### 延迟退出
+
+设置 `delay` 即可，单位为毫秒，类型为 `number`。
+
+```ts
+// vite.config.ts
+// 或者 vite.config.js
+
+import { defineConfig } from 'vite'
+import BuildedForceExit from 'vite-plugin-builded-force-exit'
+
+export default defineConfig({
+    plugins: [
+        // ...
+        BuildedForceExit({
+            delay: 5000 // 5秒后退出
+        })
+    ]
+})
 ```
 
-### dev
-
-```shell
-pnpm dev
-```
-
-### publish
-
-```shell
-npm publish
-```
-
-### play
-
-```shell
-pnpm play
-
-// or pnpm play:open
-// or pnpm play:host
-// or pnpm play:build
-// or pnpm play:preview
-// or pnpm play:preview:open
-// or pnpm play:preview:host
-```
-
-### release
-
-```shell
-pnpm release
-```
 
 <br />
 <br />
