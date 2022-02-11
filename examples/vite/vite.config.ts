@@ -12,6 +12,8 @@ export default defineConfig({
 	plugins: [
 		Vue(),
 		Inspect(),
-		BuildedForceExit({ delay: 4000 })
+		BuildedForceExit({
+			delay: 4000
+		})
 	]
 })

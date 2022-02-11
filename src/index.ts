@@ -14,7 +14,7 @@ interface Options {
 
 const useName = createPluginName()
 
-const sleepExit = createSleep(exit)
+const sleepExit = createSleep(() => exit(0))
 
 const usePlugin = (options?: Partial<Options>): Plugin => {
 	return {
@@ -23,9 +23,9 @@ const usePlugin = (options?: Partial<Options>): Plugin => {
 		closeBundle() {
 			if (options?.delay) {
 				sleepExit(options.delay)
-			} else {
-				setImmediate(exit)
+				return
 			}
+			exit(0)
 		}
 	}
 }
